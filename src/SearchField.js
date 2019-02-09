@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import purple from '@material-ui/core/colors/purple';
+import { renderComponent } from 'recompose';
 
 const styles = theme => ({
   root: {
@@ -70,23 +70,40 @@ const styles = theme => ({
   },
 });
 
-function SearchField(props) {
-  const { classes } = props;
+class SearchField extends React.Component {
+  
+  state = {
+    fieldText: ""
+  }
+  
+  handleKeyPress = target => {
+    if(target.charCode==13){
+      this.props.onEnter(this.state.fieldText);
+    } 
+  }
+  
+  render(){
+    const { classes } = this.props;
 
-  return (
-    <div className={classes.root}>
-      <FormControl className={classes.margin}>
-        <InputBase
-          id="bootstrap-input"
-          defaultValue="What's in your fridges?"
-          classes={{
-            root: classes.bootstrapRoot,
-            input: classes.bootstrapInput,
-          }}
-        />
-      </FormControl>
-    </div>
-  );
+    return (
+      <div className={classes.root}>
+        <FormControl className={classes.margin}>
+          <InputBase
+            id="bootstrap-input"
+            placeholder="What's in your fridges?"
+            classes={{
+              root: classes.bootstrapRoot,
+              input: classes.bootstrapInput,
+            }}
+            onKeyPress={this.handleKeyPress}
+            onChange={
+              event => this.setState({fieldText: event.target.value})
+            }
+          />
+        </FormControl>
+      </div>
+    );
+  }
 }
 
 SearchField.propTypes = {
