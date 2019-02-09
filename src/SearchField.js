@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import FormControl from '@material-ui/core/FormControl';
 import purple from '@material-ui/core/colors/purple';
-import { renderComponent } from 'recompose';
 
 const styles = theme => ({
   root: {
@@ -77,7 +76,7 @@ class SearchField extends React.Component {
   }
   
   handleKeyPress = target => {
-    if(target.charCode==13){
+    if(target.charCode === 13){
       this.props.onEnter(this.state.fieldText);
     } 
   }

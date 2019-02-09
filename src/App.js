@@ -20,7 +20,7 @@ class App extends React.Component {
 
   ingredientExist(searchTarget){
     const targetIndex = this.state.ingredientList.indexOf(searchTarget);    
-    return targetIndex != -1;
+    return targetIndex !== -1;
   }
 
   render() {
