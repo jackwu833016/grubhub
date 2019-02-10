@@ -17,7 +17,7 @@ class App extends React.Component {
           username: 'B',
           name: "Roasted Brussels Sprouts",
           description: "Turn your failure cabbages into a rock star-esque dish",
-          imgPath: "./images/recipeA.jpg", 
+          imgPath: "./images/recipeA.png", 
           instruction: "1)Preheat oven to 400 degrees F <br> 2)Cut off the brown ends of the Brussels sprouts and pull off any yellow outer leaves. Mix them in a bowl with the olive oil, salt and pepper. Pour them on a sheet pan and roast for 35 to 40 minutes, until crisp on the outside and tender on the inside. Shake the pan from time to time to brown the sprouts evenly. Sprinkle with more kosher salt ( I like these salty like French fries), and serve immediately. ",
           ingredientTags: ["Brussels Sprouts"],
           ingredientList: ["1 1/2 pounds Brussels sprouts", "3 tablespoons good olive oil", "3/4 teaspoon kosher salt", "1/2 teaspoon freshly ground black pepper"],
