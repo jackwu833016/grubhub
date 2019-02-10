@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './App.css';
 import SearchField from './SearchField';
 import IngredientField from './components/IngredientField';
+import RecipeCard from './components/RecipeCard';
 
 class App extends React.Component {
 
@@ -10,7 +11,37 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      ingredientList: ['Apple', 'Banada', 'Beef Jerky', 'Coffee', 'Lemon']
+      ingredientList: ['Apple', 'Banada', 'Beef Jerky', 'Coffee', 'Lemon'],
+      recipes: [
+        {
+          username: 'S',
+          name: "Recipes A",
+          description: "This impressive paella is a perfect party dish and a fun meal to cook together with you guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+          imgPath: "./images/recipeA.jpg",
+          instruction: "Cook This, then that. Then Done!!"
+        },
+        {
+          username: 'B',
+          name: "Recipes B",
+          description: "This impressive paella is a perfect 1 cup of frozen peas along with the mussels, if you like.",
+          imgPath: "./images/recipeA.jpg",
+          instruction: "Cook This, then that. Then Done!!"
+        },
+        {
+          username: 'E',
+          name: "Recipes C",
+          description: "This impressive paella is a perfect party dish and a fun meal to cook together with you guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+          imgPath: "./images/recipeA.jpg",
+          instruction: "Cook This, then that. Then Done!!"
+        },
+        {
+          username: 'E',
+          name: "Recipes D",
+          description: "This a fun meal to cook together with you guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+          imgPath: "./images/recipeA.jpg",
+          instruction: "Cook This, then that. Then Done!!"
+        }
+      ]
     };
   }
 
@@ -24,7 +55,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { ingredientList } = this.state;
+    const { ingredientList, recipes } = this.state;
 
     const searchOnEnter = (newIngredient) => {
 
@@ -44,6 +75,28 @@ class App extends React.Component {
       });
     }
 
+    const RecipeCols = () => {
+      const isOffsetDisplay = (index, odd) => (odd ? index % 2 === 0 : index % 2 != 0 );
+
+      return(
+        <Row className="recipeRow">
+          <Col className="recipeCol">
+          {
+            recipes.map(
+              (recipe, index) => ( isOffsetDisplay(index, true) && <RecipeCard key={recipe.name} { ...recipe } />)
+            )
+          }
+          </Col>
+          <Col className="recipeCol">
+          {
+            recipes.map(
+              (recipe, index) => ( isOffsetDisplay(index, false) && <RecipeCard key={recipe.name} { ...recipe } />)
+            )
+          }
+          </Col>
+        </Row>
+      );
+    };
     return (
       <Container className="root-container">
         <Row className="justify-content-md-center">
@@ -55,6 +108,7 @@ class App extends React.Component {
               chipContentArray={ingredientList}
               handleDelete={onDelete}
             />
+            <RecipeCols />
           </Col>
         </Row>
       </Container>
