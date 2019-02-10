@@ -35,7 +35,7 @@ class App extends React.Component {
           instruction: "Cook This, then that. Then Done!!"
         },
         {
-          username: 'E',
+          username: 'P',
           name: "Recipes D",
           description: "This a fun meal to cook together with you guests. Add 1 cup of frozen peas along with the mussels, if you like.",
           imgPath: "./images/recipeA.jpg",
@@ -76,7 +76,7 @@ class App extends React.Component {
     }
 
     const RecipeCols = () => {
-      const isOffsetDisplay = (index, odd) => (odd ? index % 2 === 0 : index % 2 != 0 );
+      const isOffsetDisplay = (index, odd) => (odd ? index % 2 === 0 : index % 2 !== 0 );
 
       return(
         <Row className="recipeRow">

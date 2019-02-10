@@ -7,6 +7,7 @@ import purple from '@material-ui/core/colors/purple';
 
 const styles = theme => ({
   root: {
+    marginTop: '1em',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center'
