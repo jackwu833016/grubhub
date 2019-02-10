@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>GrubHub</title>
   </head>
   <body>
@@ -40,5 +41,55 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!-- Snapchat api integration -->
+    <div class="my-bitmoji-stickerpicker-icon-target" />
+
+    <script>
+      window.snapKitInit = function () {
+      // Argument 1
+      var bitmojiWebPickerIconClass =
+        'my-bitmoji-stickerpicker-icon-target';
+
+      // Argument 2
+      var uiOptions = {
+        onStickerPickCallback:
+          function onStickerPickCallback(bitmojiImgURL){
+
+            $(".my-bitmoji-stickerpicker-icon-target img").first().attr('src', bitmojiImgURL);
+
+            console.log(bitmojiImgURL);
+          },
+        webpickerPosition: 'bottomRight',
+      };
+
+      // Argument 3
+      var loginParamsObj = {
+        clientId: 'd5e1a154-b7ab-4174-8333-e3f337a0971e',
+        redirectURI: 'https://uotta-grubhub.herokuapp.com',
+        scopeList: [ // the list of scopes you are approved for
+          'user.bitmoji.avatar',
+          'user.display_name',
+        ],
+      };
+
+      // Mount Bitmoji Icon(s)
+      snap.bitmojikit.mountBitmojiStickerPickerIcons(
+        bitmojiWebPickerIconClass,
+        uiOptions,
+        loginParamsObj,
+      );
+    };
+
+    // Load the SDK asynchronously
+    (function (d, s, id) {
+      var js, sjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://sdk.snapkit.com/js/v1/login_bitmoji.js";
+      sjs.parentNode.insertBefore(js, sjs);
+    }(document, 'script', 'bitmojikit-sdk'));
+  </script>
+
   </body>
 </html>
