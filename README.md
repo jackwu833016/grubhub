@@ -1,5 +1,7 @@
 This is our project for uOttaHack2019
 
+[Demo site](https://uotta-grubhub.herokuapp.com/)
+
 # Inspiration
 To reduce food wastes that every has by having surplus of ingredients
 
